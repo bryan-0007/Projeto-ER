@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="Disciplina.css">
+        <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous"
+      />
+      <!-- style.css file path in the line below. -->
+      <link rel="stylesheet" href="css/style.css" />
+      <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+      <link href="vendor/select2/dist/css/select2.min.css" rel="stylesheet" />
+        <title>Editar a observaçao</title>
+    </head>
+    <body>
+        <%if(user === "Encarregado"){%>
+            <%-include('./partials/headEncarregado')%>
+        <%}%>
+        <%if(user === "Psicologo"){%>
+            <%-include('./partials/headPsicologo')%>
+        <%}%>
+        <%if(user === "Professor"){%>
+            <%- include('./partials/headProfessor') %>
+        <%}%>
+
+   
+       
+        <div class="container text-center ">
+            <div class="row white limits">
+              <form action="/obser_editada" method="post">
+                <h3> nome do aluno:<%=aluno.name%></h3>
+                <br>
+                <strong> descriçao</strong><br>
+                <textarea name="descriaço" rows="4" cols="100"><%=obser.informacao%></textarea>
+                <br><br>
+                Quer eliminar o ficehiro da observaçao? <input type="checkbox" name="check_file" >
+                <br><br><br>
+                Quer mudar com quem o ficehiro foi partilhado?<br>
+                
+                <select class="js-example-basic-multiple" name="partilhado" multiple="multiple">
+                  <% for ( var j=0 ; partilhados.length> j ; j++){ %>
+                    <option value="<%=partilhados[j].id %>"><%= partilhados[j].tipo%> : <%=partilhados[j].nomeCompleto %></option>
+                  <% }%>
+                </select>
+                <br><br>
+                <input type="hidden" value="<%=obser.id%>" name="obser_id">
+                <button type="submit" >Editar observação</button>
+              </form>
+
+            </div>
+        </div>
+
+        <script src="vendor/select2/dist/js/select2.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script>
+  $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+    });
+ </script>
+    </body>
+</html>
+

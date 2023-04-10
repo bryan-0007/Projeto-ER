@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+    <%if(user=="Professor"){%>
+        <%-include('./partials/headProfessor')%>
+    <%}%>
+    <%if(user=="Encarregado"){%>
+        <%-include('./partials/headEncarregado')%>
+    <%}%>
+    <%if(user=="Psicologo"){%>
+        <%-include('./partials/headPsicologo')%>
+    <%}%>
+    <%if(user=="Aluno"){%>
+        <%-include('./partials/headAluno')%>
+    <%}%>
+    <link rel="stylesheet" href="page.css">
+</head>
+<body>
+    <div class="sub_div" style="background-color: rgb(128, 176, 206); width: 60%; border-color: black;">
+        <h1 style="color: #f6d187;">Lista de Eventos</h1>
+
+        <%eventos.forEach(evento=>{%>
+            <div class="it_falta" style="background: #E6E3D3; border-color: white; width: 50%">
+                <h2><%= evento.disciplina.nome %></h3><br>
+                <p><b>Evento</b></p>
+                <p><%= evento.nome %></p>
+                <%  if(evento.descricao !== "" && evento.descricao !== undefined){ %>
+                <p><b>Descricao</b></p>
+                <p><%= evento.descricao %>
+                <%  } %>
+                <p><b>Data e Hora</b></p>
+                <p><%= evento.year %>-<%= evento.month %>-<%= evento.day %>  <%= evento.hour %>:<%= evento.min %>:<%= evento.sec %></p>
+                <br>
+            </div>
+        <% }) %>
+        <br>
+    </div>
+</body>
+</html>

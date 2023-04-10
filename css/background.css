@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@100;400;500;600;700&display=swap");
+@import url("https://img.freepik.com/free-vector/watercolor-back-school-background-with-white-space_52683-41450.jpg?w=2000");
+
+:root {
+    --dark-color-a: #667aff;
+    --dark-color-b: #7386ff;
+    --light-color: #e6e9ff;
+    --success-color: #5cb85c;
+    --error-color: #d9534f;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url(watercolor-back-school-background-with-white-space_52683-41450.png);
+    background-size: cover;
+    background-repeat: repeat-y;;
+    background-position: center center;
+    height: 100vh;
+    font-family: "Encode Sans SC", sans-serif !important;
+}
+
+.header {
+    clear: both;
+    height: 12vh;
+}
+
+#logo {
+    float:left;
+    margin:0;
+    margin-left: 20px;
+}
+
+
+#meu:hover{
+    background-color: #cb563f!important;
+    color:white !important;
+}
+
+
+
+.ParaImg:hover{
+    opacity: 0.8;
+}
+
+.join-header2 {
+    text-align: center;
+    padding: 1vh;
+    background: var(--dark-color-a);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.form2 {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    place-items: center;
+    border-bottom: 10px;
+}
+
+.button-blue2 {
+    font-size: 2.5vh;
+    background-color: #f6d187;
+    padding: 2vh;
+    width: 100%;
+    border: none;
+    color: white;
+    margin-top: 2vh;/*3.2258064516129vh*/
+    border-radius: 1.6vh;
+    cursor: pointer;
+}
+
+.button-blue2:hover {
+    opacity: 0.6;
+}

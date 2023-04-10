@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="Disciplina.css">
+    <link rel="stylesheet" href="page.css">
+    <title>Lista de Observações</title>
+</head>
+<body>
+
+    <%if(user === "Aluno"){%>
+        <%-include('./partials/headAluno')%>
+    <%}%>
+    <%if(user === "Encarregado"){%>
+        <%-include('./partials/headEncarregado')%>
+    <%}%>
+    <%if(user === "Psicologo"){%>
+        <%-include('./partials/headPsicologo')%>
+    <%}%>
+    <%if(user === "Professor"){%>
+        <%- include('./partials/headProfessor') %>
+    <%}%>
+
+    <div class="sub_div">
+        <h1>Lista de Observações</h1>
+        <h3><%= al_n %></h3><br>
+        <form method="post">
+            <input type="hidden" id="aluno_id" name="aluno_id" value="<%= aluno_id %>">
+            <input type="submit" formaction="/Observacao" value="Criar Observação">
+        </form>
+        <%  for(let i=0; i < obs.length; i++ ){ %>
+            <div class="it_falta">
+                <h5><%= obs[i].informacao%></h5>
+                <%  if(obs[i].informacao !== null || obs[i].informacao !== undefined ){ %>
+                <a href="/download_obse/<%=obs[i].file.filename%>"><%= obs[i].file.filename%></a>
+                <%}%>
+                <br><p><b>Partilhado com:</b></p>
+                <%  for(let l=0; l < obs[i].people.length; l++ ){ %>
+                    <%= obs[i].people[l]%><br>
+                <%}%>
+                <form action="/delete-obsevation" method="post">
+                    <input type="hidden" name="delete" value="<%=obs[i]._id%>">
+                    <input type="hidden" name="ficheiro" value="<%=obs[i].file.filename%>">
+                    <button type="submit" >Eliminar observação</button>
+                  </form>
+                  <form action="/Edit" method="post">
+                    <input type="hidden" name="edit" value="<%=obs[i]._id%>">
+                    <input type="hidden" name="filename" value="<%=obs[i].file.filename%>">
+                    <button type="submit" >Editar observação</button>
+                  </form>
+            </div>
+        <%}%>
+        <br><br>
+
+    </div>
+</body>
+</html>
+

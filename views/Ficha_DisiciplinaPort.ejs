@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="disciplina.css">
+        <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous"
+      />
+      <!-- style.css file path in the line below. -->
+      <link rel="stylesheet" href="css/style.css" />
+
+        <title>Atendimento</title>
+    </head>
+    <%if(user=="Aluno"){%>
+        <%-include('./partials/headAluno')%>
+        <%}%>
+        <%if(user=="Encarregado"){%>
+          <%-include('./partials/headEncarregado')%>
+      <%}%>
+    <body>
+       
+        
+        <div class="container text-center ">
+            <div class="row white limits">
+
+                <div class="col-8 description">
+
+                    <h2>Descriçao geral da disciplina</h2>
+                    <h3><%= nome.nome %></h3>
+                    <div>
+                      
+                       
+                      
+                            <p><br><b>Plano Curricular:</b><br> Oralidade (O): Interação discursiva, Interpretação de texto, Pesquisa e registo de informação,
+                                    Produção de texto; Leitura e Escrita (LE): Fluência de leitura: velocidade, precisão, prosódia, Compreensão de texto, Registo e organização da informação,
+                                    Ortografia e caligrafia, Produção de texto; Educação Literária (EL): Leitura e audição, Compreensão de texto, Produção expressiva (oral e escrita), ; Gramática (G):
+                                    Classes de palavras, Morfologia e Lexicologia, Sintaxe
+                                <br><br><b>Objetivos:</b><br>Adquirir e desenvolver estratégias de escuta ativa com vista a reter informação essencial, a
+                                desenvolver a compreensão, e a produzir enunciados orais em contextos específicos. Compreender as diferentes intencionalidades comunicativas nas situações de oralidade e
+                                saber utilizá‐las criticamente, não só no quotidiano como na produção de discursos em
+                                contextos formais, designadamente discursos de apresentação e discursos de argumentação. Produzir textos orais em português padrão, segundo categorias e géneros específicos,
+                                complexificando progressivamente as suas diferentes dimensões e caracterizações. Usar fluentemente a língua, mobilizando diversos recursos verbais e não‐verbais, e utilizando
+                                de forma oportuna recursos tecnológicos. Adquirir, interiorizar e automatizar os processos que permitem a decodificação do texto
+                                escrito, com vista a uma leitura individual fluente. Desenvolver e consolidar a capacidade de leitura de textos escritos, de diferentes géneros e
+                                com diferentes temas e intencionalidades comunicativas. Compreender a associação entre o código oral e o código escrito, apropriando‐se das
+                                características deste último, de modo a redigir com correção linguística. Desenvolver a capacidade de adequar formas de escrita a diferentes situações de
+                                comunicação e em contextos específicos, fazendo uso reflexivo das diversas modalidades da
+                                língua. Produzir textos com objetivos críticos, pessoais e criativos. Produzir textos escritos de diferentes categorias e géneros, conhecendo e mobilizando as
+                                diferentes etapas da produção textual: planificação, textualização e revisão.
+                                <br><br><b>Métodos de avaliação:</b><br> 2 Exames - 60% da nota final; 20% - 2 apresentações orais (cada 10%); 20% - 1 trabalho individual; 10% - Participação
+                                <br><br><b>Bibliografia:</b><br>Bem Explicado! 6º Ano - Margarida Gomes, Carlos Gomes, Albertina Calvo - Editora Caminho</p>
+                       
+                    </div>
+
+
+                    <br>
+                </div>
+
+                    <div class="col-4 Professor limits2"> 
+                        <h4><strong>Nome do professor:</strong> <%=nome.professor.name%> </h4>
+                        <br>
+                        <h4><strong>Email do professor:</strong> <%=nome.professor.email%> </h4>
+                        <br>
+                        <h4><strong>Horas de atendimento:</strong>
+                          
+                          
+                                <p>Segunda-feira, 9h-11h;<br></p>
+            
+                        </h4>
+                        <br>
+
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const parentDiv = document.querySelector(".admin");
+        window.addEventListener("load", async () => {
+          try {
+            let result = await axios({
+              method: "GET",
+              url: "/api/getFiles",
+            });
+
+            let files = result.data.files;
+      
+           files.forEach((file) => {
+        markup = `
+              <div class="files__entity">
+                <i class="files__icon fa fa-file-text" aria-hidden="true"></i>
+                <span class="files__date">Date created:- ${file.createdAt } ${file._id}</span>
+                <a href="/download/${file._id}" class="files__link"><i class="fa fa-eye tests__icon" aria-hidden="true"></i></a>
+              </div>
+            `;
+        parentDiv.insertAdjacentHTML("beforeend", markup);
+      });
+          } catch (error) {
+            console.log(error);
+          }
+        });
+      </script>
+</html>
+
+
+
+
+
+
+
+

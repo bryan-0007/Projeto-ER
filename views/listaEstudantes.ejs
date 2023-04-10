@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="page.css">
+
+
+    <title>Lista de Estudantes</title>
+</head>
+<body>
+
+    <% if(t === "Professor"){ %> <%- include('./partials/headProfessor') %><% } %>
+    <% if(t === "Aluno"){ %><%- include('./partials/headAluno') %><% } %>
+    <%if(t === "Psicologo"){ %><%- include('./partials/headPsicologo') %><% } %>
+    <%if (t === "Encarregado"){ %><%- include('./partials/headEncarregado') %> <% } %>
+
+
+    <div class="sub_div">
+        <h1 class="white">Lista de Estudantes</h1>
+        <% if(t === "Professor") {%>
+            <h3 class="white"><%= disc.nome %></h3>
+            <%  for(let i=0; i < disc.alunos.length; i++ ){ %>
+                <div class="it_estudante">
+                    <br>
+                    <h4><%= disc.alunos[i].nomeCompleto %></h4>
+                    <p>id: <%= disc.alunos[i].aluno_id %></p>
+                    <form method="post">
+                        <input type="hidden" id="aluno_id" name="aluno_id" value="<%= disc.alunos[i].aluno_id %>">
+                        <input type="submit" formaction="/FichaEstudante" value="Ficha de Estudante" class="button">
+                        <input type="submit" formaction="/ListaObservacoes" value="Observações" class="button">
+                    </form>
+                    <br>
+                </div>
+            <% } %>
+        <% } %>
+        <% if(t === "Psicologo") {%>
+            <%  for(let i=0; i < alunos.length; i++ ){ %>
+                <div class="it_estudante">
+                    <br>
+                    <h4><%= alunos[i].nomeCompleto %></h4>
+                    <p>id: <%= alunos[i]._id %></p>
+                    <form method="post">
+                        <input type="hidden" id="aluno_id" name="aluno_id" value="<%= alunos[i]._id %>">
+                        <input type="submit" formaction="/FichaEstudante" value="Ficha de Estudante" class="button">
+                        <input type="submit" formaction="/ListaObservacoes" value="Observações" class="button">
+                    </form>
+                    <br>
+                </div>
+            <% } %>
+        <% } %>
+        <% if(t === "Encarregado" && edu !== null ){%>
+            <%  for(let i=0; i < edu.length; i++ ){ %>
+                <div class="it_estudante">
+                    <br>
+                    <h4><%= edu[i].nomeCompleto %></h4>
+                    <p>id: <%= edu[i]._id %></p>
+                    <form method="post">
+                        <input type="hidden" id="aluno_id" name="aluno_id" value="<%= edu[i]._id %>">
+                        <input type="submit" formaction="/FichaEstudante" value="Ficha de Estudante" class="button">
+                        <input type="submit" formaction="/ListaObservacoes" value="Observações" class="button">
+                    </form>
+                    <br>
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+
+
+</body>
+</html>

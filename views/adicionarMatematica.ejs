@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+    <%-include('./partials/headProfessor')%>
+</head>
+<body>
+    <div class="card" style="height:65vh; width: 80vh; position: relative; top:6vh; left:60vh;background-color:rgb(192, 192, 222);">
+		<div class="card-body">
+            <header class="join-header2">
+                <h1>Inserção de Nota</h1>
+            </header>
+            <br>
+            <form action="adicionaMatematica" method="post"> <!---From com method post -->
+
+            <label class="form-label" for="Aluno"
+            >Escolher Aluno:</label>
+        
+        <select style="height:5vh;font-size:2vh" name="Aluno" class="form-select" aria-label="Default select example">
+            <%alunos.forEach(Alunis=>{%>
+            <%=console.log(Alunis.Name_utilizador.name)%>
+            <%=console.log(Alunis.Avaliacao.length)%>
+            <%if(Alunis.Avaliacao.length <= 0){ %>
+            <option name=<%=Alunis.Name_utilizador.name%> value=<%=Alunis.Name_utilizador.name%> ><%=Alunis.Name_utilizador.name%></option>
+            <%}})%>
+        </select>
+            <br>
+
+
+                <label class="form-label" for="notaDeAluno"
+                >Nota a Matemática do Aluno:</label
+            >
+            <input
+                class="form-control"
+                id="notaDeAluno"
+                type="number"
+                name="notaDeAluno"
+                required
+            />
+            <br>
+			<div style="text-align: center;">
+                <button class="button-blue2">Submit</button>
+			</div>
+		</form> 
+        </div>
+    </div>
+
+</body>
+</html>

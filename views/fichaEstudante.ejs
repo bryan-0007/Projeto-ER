@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="page.css">
+    <link rel="stylesheet" href="disciplina.css">
+
+
+    <title>Ficha de Estudante</title>
+</head>
+<body>
+    <% if(t === "Professor"){ %>
+        <%- include('./partials/headProfessor') %>
+    <%} else if(t === "Aluno"){ %>
+            <%- include('./partials/headAluno') %>
+    <%} else if(t === "Psicologo"){ %>
+        <%- include('./partials/headPsicologo') %>
+    <%} else if (t === "Encarregado"){ %>
+        <%- include('./partials/headEncarregado') %>
+    <%}%>
+
+    <div class="container text-center ">
+        <div class="row white limits">
+            <div class="col-8 description">
+                <h2><%= utiliz.nomeCompleto %></h2>
+                <h3>Morada</h3>
+                <% if( alun.morada !== undefined){ %>
+                    <%= alun.morada %><br>
+                <%}%>
+                <% if( alun.codigoPostal !== undefined){ %>
+                    <%= alun.codigoPostal %>
+                <%}%>
+
+                <br><h3>Data de Nascimento</h3>
+                <% if( alun.dataDeNascimento !== undefined){ %>
+                    <%= alun.dataDeNascimento %>
+                <%}%>
+
+                <br><h3>Número de Identificação Civil</h3>
+                <% if( alun.numeroCC !== undefined){ %>
+                    <%= alun.numeroCC %>
+                <%} else {%>
+                    <p><i>Sem dados</i></p>
+                <%}%>
+
+                <br><h3>Encarregado de Educação</h3>
+                <% if( enc !== null){ %>
+                    <%= enc.nomeCompleto %><br>
+                <%} else {%>
+                    <p><i>Sem dados</i></p>
+                <%}%>
+
+                <h3>Disciplinas Inscritas</h3>
+                <% if( disc !== undefined){ %>
+                    <% for(let i=0; i < disc.length; i++ ){ %>
+                        <%= disc[i] %><br>
+                    <%}%>
+                <%} else {%>
+                    <p><i>Sem dados</i></p>
+                <%}%>
+
+            </div>
+
+            <div class="col-4 Professor limits2 sidebar_fichaEstudante">
+                <h4><strong>Ações:</strong></h4>
+                    <div class="">
+                        <% if ( actUser === "Professor" || actUser === "Psicologo"){ %>
+                            <form method="post">
+                                <input type="hidden" id="aluno_id" name="aluno_id" value="<%= al_id %>">
+                                <input type="submit" formaction="/ListaObservacoes" value="Visualizar Observações">
+                            </form>
+                        <%}%>
+                    </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('./partials/head') %>
+        <link rel="stylesheet" href="logReg.css" />
+    </head>
+
+    <body>
+        <div class="content">
+            <div class="main">
+                <h1><strong>SIGN UP</strong></h1>
+                <a
+                data-attr="img"
+                class="ParaImg"
+                href="/"
+                rel="prev"
+                target="_self"
+                ><img
+                src="school logo gold v2.png"
+                style="height: 15vh; width: 19.5vh"
+                alt="home"
+                /></a>
+                <br /><br />
+                <% if (messages) { %>
+                <span class="error"><%= messages.error %></span>
+                <% } %><br />
+                <form class="needs-validation" action="/register" method="POST">
+                    <div class="form-group was-validated">
+                        <label class="form-label" for="nomeCompleto">Nome Completo:</label>
+                        <input
+                            class="form-control"
+                            id="nomeCompleto"
+                            type="nomeCompleto"
+                            name="nomeCompleto"
+                            placeholder="Jonny The Designer"
+                            required
+                        />
+                        <div class="invalid-feedback" style="font-weight: bold">
+                            *Please enter your full name
+                        </div>
+                    </div>
+                    <div class="form-group was-validated">
+                        <label class="form-label" for="name">Name:</label>
+                        <input
+                            class="form-control"
+                            id="name"
+                            type="name"
+                            name="name"
+                            placeholder="Jonny"
+                            required
+                        />
+                        <div class="invalid-feedback" style="font-weight: bold">
+                            *Please enter your name
+                        </div>
+                    </div>
+                    <div class="form-group was-validated">
+                        <label class="form-label" for="email"
+                            >Email adress:</label
+                        >
+                        <input
+                            class="form-control"
+                            id="email"
+                            type="email"
+                            name="email"
+                            placeholder="johnnythedesigner@gmail.com"
+                            required
+                        />
+                        <div class="invalid-feedback" style="font-weight: bold">
+                            *Please enter your email address
+                        </div>
+                    </div>
+                    <div class="form-group was-validated">
+                        <label class="form-label" for="password"
+                            >Password:</label
+                        >
+                        <input
+                            class="form-control"
+                            id="password"
+                            type="password"
+                            name="password"
+                            placeholder="* * * * * *"
+                            required
+                        />
+                        <div class="invalid-feedback" style="font-weight: bold">
+                            *Please enter your password
+                        </div>
+                    </div>
+
+                    <label class="form-label" for="tipoCliente"
+                    >Tipo de cliente:</label>
+                
+                    <select id="tipo" type="tipo" name="tipo" class="form-select" aria-label="Default select example">
+                        <option id="1">Aluno</option>
+                        <option id="2">Psicologo</option>
+                        <option id="3">Encarregado</option>
+                        <option id="4">Professor</option>
+                    </select>
+
+                    <a
+                        href="/login"
+                        target="_self"
+                        rel="external"
+                        style="display: block; margin-top: 2vh"
+                        >Login to existing account</a
+                    >
+                    <button class="button-blue">SUBMIT</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

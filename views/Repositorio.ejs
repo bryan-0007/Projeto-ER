@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="Disciplina.css">
+        <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous"
+      />
+      <%if(user=="Professor"){%>
+        <%- include('./partials/headProfessor') %>
+      <%}%>
+
+      <%if(user=="Aluno"){%>
+        <%- include('./partials/headAluno') %>
+      <%}%>
+      
+      <!-- style.css file path in the line below. -->
+      <link rel="stylesheet" href="css/style.css" />
+
+        <title>Atendimento</title>
+    </head>
+    <body>
+        
+            
+        
+       
+        <div class="container text-center ">
+            <div class="row white limits">
+                
+               
+                    <main class="admin">
+                        <div class="admin__upload-file">
+                          <form action="/upload" enctype="multipart/form-data" method="POST">
+                              <input type="file" class="admin__input button" id="myFile" name="myFile" />
+                              <input class="admin__submit button" type="submit" />
+                            </form>
+                        </div>
+                      </main>
+                      
+
+                <div class="admin file">
+
+                  <ol>
+                  <% if(files_info!= false){%>
+                    <% for ( var i=0 ; files_info.length> i  ; i++){ %>
+
+                      <li> nome: <%=files_info[i].filename %>  ---- tipo de conteudo: <%=files_info[i].contentType %> <a href="/download/<%=files_info[i].filename%>" class="files__link"><i class="fa fa-eye tests__icon" aria-hidden="true"></i></a> </li>
+                      
+                    <% } %>
+                    <% }else{ %>
+                      Nao existem ficheiros
+                      <% } %>
+                </ol>
+
+                </div>
+            </div>
+        </div>
+
+  <!--      <script type="text/javascript" src="./js/gapi-upload.js"></script>
+        <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+        <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+            const parentDiv = document.querySelector(".admin");
+            window.addEventListener("load", async () => {
+              try {
+                let result = await axios({
+                  method: "GET",
+                  url: "/api/getFiles",
+                });
+    
+            let files = result.data.files;
+            markup = "<table><tbody><tr>  <td> <strong>Data de criaçao do ficheiro </strong></td><td> <strong>Nome do ficheiro</strong></td><td><strong> Download do ficheiro </strong></td>"
+            files.forEach((file) => {
+                 markup = markup+`<tr><td>
+                    <i class="files__icon fa fa-file-text" aria-hidden="true"></i>
+                    criado:${file.createdAt} </td><td>name:${file.name}</td><td>
+                    download: <a href="/download/${file._id}" class="files__link"><i class="fa fa-eye tests__icon" aria-hidden="true"></i></a>
+                    </tr> `;
+           
+          });
+          markup  = markup+ "</tbody></table>"
+          parentDiv.insertAdjacentHTML("beforeend", markup);
+              } catch (error) {
+                console.log(error);
+              }
+            });
+          </script>-->
+
+    </body>
+</html>
+
+
+
+
+
+
+

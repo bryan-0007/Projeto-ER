@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+            integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="style.css" />
+        <title>Chat</title>
+        <%if(user=="Professor"){%> <%-include('./partials/headProfessor')%>
+        <%}%> <%if(user=="Encarregado"){%>
+        <%-include('./partials/headEncarregado')%> <%}%>
+        <%if(user=="Psicologo"){%> <%-include('./partials/headPsicologo')%>
+        <%}%> <%if(user=="Aluno"){%> <%-include('./partials/headAluno')%> <%}%>
+    </head>
+    <body>
+        <div class="join-container" style="position: relative; bottom: 6vh">
+            <header class="join-header">
+                <h1><i class="fas fa-smile"></i> Chat</h1>
+            </header>
+            <main class="join-main">
+                <form action="chat">
+                    <div class="form-control" style="display: none">
+                        <input
+                            type="txt"
+                            name="username"
+                            id="username"
+                            placeholder="Enter username..."
+                            required
+                            value=<%=user_logado%>
+                        />
+                    </div>
+                    <div>
+                        <label
+                            for="room"
+                            style="
+                                position: relative;
+                                left: 1.5vh;
+                                margin-top: 1vh;
+                            "
+                            >Utilizadores :</label>
+                        <select
+                            name="room"
+                            id="room"
+                            style="
+                                color: black;
+                                padding: 1vh;
+                                padding-left: 2vh;
+                                border: 0 1vh;
+                                border-radius: 1.6vh;
+                                place-items: center;
+                                margin-bottom: 3vh;
+                            "
+                        >
+                            <%listaUtilizadores.forEach(Utilizador =>{%>
+                            <option style="color: black" value= <%=count%>
+                                >
+                                <%=Utilizador.nomeCompleto%>- <%=Utilizador.tipo%>
+                            </option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <button
+                        type="submit"
+                        class="btn"
+                        style="
+                            background-color: #f6d187;
+                            padding: 2vh;
+                            width: 100%;
+                            border: none;
+                            color: white;
+                            margin-top: 2vh; /*3.2258064516129vh*/
+                            border-radius: 1.6vh;
+                            cursor: pointer;
+                        "
+                    >
+                        Join Chat
+                    </button>
+                </form>
+            </main>
+        </div>
+    </body>
+</html>

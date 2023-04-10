@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@100;400;500;600;700&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /*height: 100vh;*/
+    /*background-color: #6a5acd;*/
+    font-family: "Encode Sans SC", sans-serif;
+}
+
+body:not(h1){
+    font-size: 16px;
+}
+
+.content {
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+}
+
+.main {
+    width: 80.645161290323vh;
+    max-width: 90%;
+    text-align: center;
+    background-color: white;
+    padding: 4.0322580645161vh 5.6451612903226vh;
+    border-radius: 1.6129032258065vh;
+    box-shadow: 0vh 0vh 3.2258064516129vh #ccc;
+}
+
+.main h1 {
+    font-size: 30px !important;
+    color:#B19CD8;
+    margin: 0 0 4.0322580645161vh 0;
+}
+
+.main form input {
+    width: 100%;
+    padding: 1vh;
+    padding-left: 2vh;
+    border: 0 1vh;
+    border-radius: 1.6vh;
+    place-items: center;
+}
+
+.main form select {
+    width: 100%;
+    padding: 1vh;
+    padding-left: 2vh;
+    border: 0 1vh;
+    border-radius: 1.6vh;
+    place-items: center;
+}
+
+.button-blue {
+    background-color: #f6d187;
+    padding: 2vh;
+    width: 100%;
+    border: none;
+    color: white;
+    margin-top: 2vh;/*3.2258064516129vh*/
+    border-radius: 1.6vh;
+    cursor: pointer;
+}
+
+.button-blue:hover {
+    opacity: 0.6;
+}
+
+.main form input:focus,
+.main form button:focus,
+.main form select:focus,
+.main form checkbox:focus {
+    outline: none;
+}
+
+.error {
+    color: #cc0033;
+    font-size: 2.0967741935484vh;
+    font-weight: bold;
+    float: left;
+    line-height: 3.2258064516129vh;
+    text-shadow: 0.16129032258065vh 0.16129032258065vh rgba(250, 250, 250, 0.3);
+    position: relative;
+    left: 3.2258064516129vh;
+}
+
+label {
+    float: left;
+    position: relative;
+    left: 1.5vh;
+    font-weight: 400;
+    margin-top: 1vh;
+}
+
+a {
+    color: #f6d187 !important;
+    text-decoration-line: none;
+}
+
+a:hover {
+    opacity: 0.6;
+    text-decoration-line: none;
+}
+
+form-group {
+    margin-bottom: 0px !important;
+}
+
+/* Customize the label (the cont) */
+.cont {
+    display: block;
+    position: relative;
+    margin-bottom: 1.9354838709677vh;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.form-group.was-validated {
+    margin: 0px !important;
+}

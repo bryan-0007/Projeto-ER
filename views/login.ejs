@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('./partials/head') %>
+        <link rel="stylesheet" href="logReg.css" />
+    </head>
+    <body>
+        <div class="content">
+            <div class="main">
+                <h1><strong>LOG IN</strong></h1>
+                <a
+                    data-attr="img"
+                    class="ParaImg"
+                    href="/"
+                    rel="prev"
+                    target="_self"
+                    ><img
+                        src="school logo gold v2.png"
+                        style="height: 15vh; width: 19.5vh"
+                        alt="home"
+                /></a>
+                <br /><br />
+                <% if (messages) { %>
+                <span class="error"><%= messages.error %></span>
+                <% } %><br />
+                <form class="needs-validation" action="/login" method="POST">
+                    <div class="form-group was-validated">
+                        <label class="form-label" for="email"
+                            >Email address:</label
+                        >
+                        <input
+                            class="form-control"
+                            id="email"
+                            type="email"
+                            name="email"
+                            placeholder="johnnythedesigner@gmail.com"
+                            required
+                        />
+                        <div class="invalid-feedback" style="font-weight: bold">
+                            *Please enter your email address
+                        </div>
+                    </div>
+                    <div
+                        class="form-group was-validated"
+                        style="margin-bottom: 10px !important"
+                    >
+                        <label class="form-label" for="password"
+                            >Password:</label
+                        >
+                        <input
+                            class="form-control"
+                            id="password"
+                            type="password"
+                            name="password"
+                            placeholder="* * * * * *"
+                            required
+                        />
+                        <div class="invalid-feedback" style="font-weight: bold">
+                            *Please enter your password
+                        </div>
+                    </div>
+
+                    <a
+                        href="/register"
+                        target="_self"
+                        rel="external"
+                        style="display: block; margin-top: 2vh"
+                    >
+                        Create a new acount
+                    </a>
+                    <button class="button-blue">SUBMIT</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

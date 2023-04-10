@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<%if(user=="Encarregado"){%>
+    <head>
+        
+        <%-include('./partials/headEncarregado')%>
+    
+    </head>
+
+<body>
+    <div class="card" style="height:45vh; width: 80vh; position: relative; top:12vh; left:60vh;background-color:rgb(192, 192, 222);">
+        <div class="card-body">
+            <header class="join-header2">
+                <h1>Associar Estudante</h1>
+            </header>
+            <form action="/associarEstudante" method="POST">
+
+            <label class="form-label" for="tipoCliente" style="position:relative; top:6vh; font-size: 2.5vh;"
+            >Lista de Educandos:</label>
+
+            <%var todosPequenos=[]%>
+            <%var todilhasPequenos=[]%>
+
+            <%for(var i = 0; i < todos.length; i++){%>
+                <%todosPequenos.push(todos[i])%>
+            <%}%>
+            
+            <%for(var i = 0; i < educantes.length; i++){%>
+                <%for(var j = 0; j < educantes[i].educandos.length; j++){%>
+                    <%todilhasPequenos.push(educantes[i].educandos[j])%> 
+                <%}%>
+            <%}%>
+
+
+            <%for(var i=0; i<todosPequenos.length; i++){%>
+                <%for(var j=0; j<todilhasPequenos.length; j++){%>
+                    <%if(todosPequenos[i]._id.equals(todilhasPequenos[j]._id)){%>
+                        <%todosPequenos.splice(i, 1);%> 
+                    <%}%>
+                <%}%> 
+            <%}%> 
+
+
+        
+            <select  name="select" style="position:relative; top:6vh; color: black;
+            padding: 1vh;
+            padding-left: 2vh;
+            border: 0 1vh;
+            border-radius: 1.6vh;
+            place-items: center;
+            margin-bottom: 3vh;
+            font-size: 2vh;" class="form-select" aria-label="Default select example">
+            <%for(var i=0; i<todosPequenos.length; i++){%>
+                <option> <%=todosPequenos[i].name%> </option>
+            <%}%> 
+            </select>
+
+            <div style="text-align: center;position:relative; top:12vh;">
+
+                
+                <a href="/">
+                    <button class="btn" style="background-color: #f6d187;
+                    position: relative;
+                    bottom: 6vh;
+                    padding: 2vh;
+                    width: 100%;
+                    border: none;
+                    color: white;
+                    margin-top: 2vh; /*3.2258064516129vh*/
+                    border-radius: 1.6vh;
+                    cursor: pointer;">Submit</button>
+                </a>
+            </div>
+        </form>
+
+        </div>
+    </div>
+
+</body>
+
+
+</html>
+<%}%>

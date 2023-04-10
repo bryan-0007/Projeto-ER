@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+    <%if(user=="Professor"){%>
+        <%-include('./partials/headProfessor')%>
+    <%}%>
+    <%if(user=="Encarregado"){%>
+        <%-include('./partials/headEncarregado')%>
+    <%}%>
+    <%if(user=="Psicologo"){%>
+        <%-include('./partials/headPsicologo')%>
+    <%}%>
+    <%if(user=="Aluno"){%>
+        <%-include('./partials/headAluno')%>
+    <%}%>
+</head>
+
+<body>
+    <div class="card" style="height:75vh; width: 130vh; position: relative; top:6vh; left:40vh;background-color:rgb(247, 247, 248);">
+        <div class="card-body" style="overflow-y:scroll;">
+            <header style="background-color:#639fbf" class="join-header2">
+                <h1>Pauta Dos Alunos</h1>
+            </header>
+            <br>
+            <br>
+
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Matemática</th>
+                    <th scope="col">Inglês</th>
+                    <th scope="col">Português</th>
+                    <th scope="col">Informática</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%buscarNome.forEach(alunosDaEscola=>{%>
+                    <tr>
+                    <%console.log(alunosDaEscola.Name_utilizador)%>
+                    <th scope="row"><%=alunosDaEscola.Name_utilizador.name%></th><!---Aqui coloco o nome dos alunos-->
+                    <%alunosDaEscola.Avaliacao.forEach(avalia=>{%> 
+                
+                    <%if(avalia.disciplina.nome==="Matemática"){%>
+                      <td><%=avalia.nota%></td> <!---Nota de Matematica-->
+                    <%}else if(avalia.disciplina.nome==="Inglês"){%>
+                      <td><%=avalia.nota%></td> <!---Nota de Matematica-->
+                    <%}else if(avalia.disciplina.nome==="Português"){%>
+                      <td><%=avalia.nota%></td> <!---Nota de Matematica-->
+                    <%}else if(avalia.disciplina.nome==="Informática"){%>
+                      <td><%=avalia.nota%></td> <!---Nota de Matematica-->
+                    <%}else{%>
+                      <td>-</td>
+                    <%}%>
+                    <%})%>
+                  </tr>
+                  <%})%>
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+</body>
+<script>
+  addEventListener
+</script>
+
+</html>
+
+
+
+
+
+

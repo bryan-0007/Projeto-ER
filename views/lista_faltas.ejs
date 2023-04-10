@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="page.css">
+
+
+    <title>Lista de Faltas</title>
+</head>
+<body>
+    <%- include('./partials/headProfessor') %>
+
+    <div class="sub_div" style="width:115vh">
+        <h1>Lista de Faltas</h1>
+        <a href="falta" class="add">Criar Falta</a>
+
+        <%  for(let i=0; i < faltas.length; i++ ){ %>
+            <div class="it_falta">
+                <h3><%= faltas[i].tipo %></h3><br>
+                <p><b><%= faltas[i].nome %></b></p><br>
+                <%  if(faltas[i].observacao !== "" && faltas[i].observacao !== undefined){ %>
+                <p><b>Observação</b></p>
+                <p><%= faltas[i].observacao %>
+                <%  } %>
+                <p><b>Data e Hora</b></p>
+                <p><%= faltas[i].year %>-<%= faltas[i].month %>-<%= faltas[i].day %>  <%= faltas[i].hour %>:<%= faltas[i].min %>:<%= faltas[i].sec %></p>
+            </div>
+        <% } %>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="Disciplina.css">
+        <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous"
+      />
+      <!-- style.css file path in the line below. -->
+      <link rel="stylesheet" href="css/style.css" />
+      <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+        <title>Observaçoes</title>
+    </head>
+    <body>
+
+
+
+    <%if(user === "Aluno"){%>
+        <%-include('./partials/headAluno')%>
+    <%}%>
+    <%if(user === "Encarregado"){%>
+        <%-include('./partials/headEncarregado')%>
+    <%}%>
+    <%if(user === "Psicologo"){%>
+        <%-include('./partials/headPsicologo')%>
+    <%}%>
+    <%if(user === "Professor"){%>
+        <%- include('./partials/headProfessor') %>
+    <%}%>
+
+
+    <div class="container text-center ">
+        <div class="row white limits">
+            <h3>Criar Observação</h3> <br>
+
+            <form enctype="multipart/form-data">
+                <p><b>Descrição</b></p>
+                <textarea name="descricao" required rows="4" cols="100"  class="form-control"></textarea>
+                <br>
+
+                <input type="file" class="admin__input button " id="obser" name="obser" style="width: 100%" />
+
+                <br><br><p><b>Partilhar o ficheiro com utilizadores</b></p>
+                <select class="js-example-basic-multiple selected" name="partilhado[]" multiple="multiple" style="width: 100%">
+                    <% for ( var j=0 ; listaUtilizadores.length> j ; j++){ %>
+                        <%if(listaUtilizadores[j].tipo !== "Aluno"){%>
+                            <option value="<%=listaUtilizadores[j]._id %>"> <%=listaUtilizadores[j].tipo%> : <%=listaUtilizadores[j].nomeCompleto %></option>
+                        <% }%>
+                    <% }%>
+                </select>
+                <br><br>
+
+                <input type="hidden" name="aluno_id" value="<%= aluno_id %>">
+                <p><b>Guardar:</b></p>
+                <button class="admin__submit button" type="submit" formaction="/Observacoe" formmethod="post">
+                    Com ficheiro
+                </button>
+                <button class="admin__submit button" type="submit" formaction="/observacaoS" formmethod="post">
+                    Sem ficheiro
+                </button>
+                <!--<input class="admin__submit button" name="sub1" type="submit" value="Com ficheiro" formaction="/Observacoe" formmethod="post"/>
+                <br>
+                <input class="admin__submit button" name="sub2" type="submit" value="Sem ficheiro" formaction="/observacao_sem_fich" formmethod="post"/>
+                -->
+            </form>
+            <br><br>
+        </div>
+    </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+ <script>
+  $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+    });
+ </script>
+    </body>
+</html>
+

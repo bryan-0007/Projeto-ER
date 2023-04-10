@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%-include('./partials/headEncarregado')%>
+        <style>
+            strong{
+                font-size: 3vh; 
+                color:#f6d187;
+            }
+        </style>
+    </head>
+    <body>
+        <div
+            class="card"
+            style="
+                height: 75vh;
+                width: 80vh;
+                position: relative;
+                top: 6vh;
+                left: 60vh;
+                background-color: rgb(192, 192, 222);
+            "
+        >
+            <div class="card-body" style="overflow: scroll; ">
+                
+                <header class="join-header2" style="margin-bottom: 4vh;">
+                    <h1>Notas dos Educandos</h1>
+                </header>    
+                <%var TodosIDs=[]; %>
+                <%educantes.educandos.forEach(alunosDaPimba=>{%>
+                    <% var media = 0; %>
+                <div style="width: 320px;
+                padding: 4vh;
+                border: 2vh solid gray;
+                margin-top: 2vh !important;
+                margin: auto;
+                width: 75%;
+                background-color:aliceblue;
+                ;"
+                >
+                <div>
+                    <label
+                        for="educando"
+                        style="position: relative; left: 1.5vh; margin-top: 4vh;"
+                    ><strong>Educando: </strong> <%=alunosDaPimba.name%></label>
+                    <%console.log(alunosDaPimba._id)%>
+                    
+                    <%TodosIDs.push(alunosDaPimba._id)%>
+                </div>
+                <div>
+
+                    <%educantis.forEach(alunosDaTrolha=>{%>
+                        <%for(var i=0; i<TodosIDs.length;i++){%>
+                            
+                                <%if(TodosIDs[i].equals(alunosDaTrolha.aluno.Name_utilizador._id)){%>
+                                    
+                                    <%if(alunosDaTrolha.disciplina.nome=="Português"){%>    
+                    <label
+                        for="notaPortugues"
+                        style="position: relative; left: 1.5vh; margin-top: 4vh;" >
+                                Nota a Português: <%=alunosDaTrolha.nota%></label>
+ 
+
+                                    <%}%>
+                                <%}%>
+                                <% break; %> 
+                            <%}%> 
+                            
+                    
+
+                </div>
+
+                <div>
+
+                    
+                        <%for(let i=0; i<TodosIDs.length;i++){%>
+                            
+                                <%if(TodosIDs[i].equals(alunosDaTrolha.aluno.Name_utilizador._id)){%>
+                                    
+                                    <%if(alunosDaTrolha.disciplina.nome=="Matemática"){%>    
+                    <label
+                        for="notaMatematica"
+                        style="position: relative; left: 1.5vh; margin-top: 4vh">
+                                    Nota a Matemática: <%=alunosDaTrolha.nota%></label>
+                                
+                                    
+                                    <%}%>
+                                <%}%>
+                                <% break; %>
+                            <%}%>
+                            
+                    
+
+                </div>
+
+                <div>
+
+                    
+                        
+                            <%for(var i=0; i<TodosIDs.length;i++){%>
+                                <%if(TodosIDs[i].equals(alunosDaTrolha.aluno.Name_utilizador._id)){%>   
+                                    
+                                    <%if(alunosDaTrolha.disciplina.nome=="Inglês"){%> 
+                    <label
+                        for="notaIngles"
+                        style="position: relative; left: 1.5vh; margin-top: 4vh">
+                            Nota a Inglês: <%=alunosDaTrolha.nota%> </label>
+
+                    
+                                    <%}%>
+                                <%}%>
+                                <% break; %>
+                            <%}%> 
+                            
+                    
+
+                </div>
+
+                <div>
+
+                    
+                        
+                            <%for(var i=0; i<TodosIDs.length;i++){%>
+                                <%if(TodosIDs[i].equals(alunosDaTrolha.aluno.Name_utilizador._id)){%> 
+                                    
+                                    <%if(alunosDaTrolha.disciplina.nome=="Informática"){%>
+                                        <%TodosIDs.splice(0,1)%> 
+                    <label
+                        for="notaInformatica"
+                        style="position: relative; left: 1.5vh; margin-top: 4vh">
+                            Nota a Informática: <%=alunosDaTrolha.nota%></label>
+                                    <%}%>
+                                <%}%>
+                                <% break; %>
+                            <%}%>
+                    <%})%>
+                </div>
+                </div>
+                <%})%>
+            </div>
+        </div>
+    </body>
+</html>
